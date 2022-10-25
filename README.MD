@@ -1,1 +1,1 @@
-# Simple GULP creating
+# Simple GULP project
