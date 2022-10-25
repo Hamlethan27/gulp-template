@@ -20,6 +20,7 @@ import htmlmin from 'gulp-htmlmin';
 import size from 'gulp-size';
 import newer from 'gulp-newer';
 import browsersync from 'browser-sync';
+import ejs from 'gulp-ejs';
 
 const sass = gulpSass(dartSass);
 
@@ -42,6 +43,10 @@ const path = {
     htmls: {
         src: 'src/*.html',
         dest: 'dist/'
+    },
+    ejs: {
+        src: 'src/ejsFiles/*.ejs',
+        dest: 'dist/ejsFiles'
     }
 }
 
@@ -52,6 +57,16 @@ const html = () => {
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(size())
     .pipe(gulp.dest(path.htmls.dest))
+    .pipe(browsersync.stream())
+}
+
+
+const EJS = () => {
+    return gulp.src(path.ejs.src)
+    .pipe(ejs({
+        msg: "Hello gulp!"
+    }))
+    .pipe(gulp.dest(path.ejs.dest))
     .pipe(browsersync.stream())
 }
 
@@ -75,7 +90,6 @@ const styles = () => {
     .pipe(size())
     .pipe(gulp.dest(path.styles.dest))
     .pipe(browsersync.stream())
-
 }
 
 
@@ -93,7 +107,6 @@ const scripts = () => {
     .pipe(size())
     .pipe(gulp.dest(path.scripts.dest))
     .pipe(browsersync.stream())
-
 }
 
 
@@ -134,12 +147,14 @@ const watch = () => {
     gulp.watch(path.scripts.src, scripts)
     gulp.watch(path.htmls.src).on('change', browsersync.reload)
     gulp.watch(path.htmls.src, html)
+    gulp.watch(path.images.src, img)
+    gulp.watch(path.ejs.src, EJS)
 }
 
 
 // Объединение все функций
 
-const build = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch);
+const build = gulp.series(clean, gulp.parallel(EJS, html), gulp.parallel(styles, scripts, img), watch);
 
 
 gulp.task('default', build);
