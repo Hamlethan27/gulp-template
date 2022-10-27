@@ -21,6 +21,7 @@ import size from 'gulp-size';
 import newer from 'gulp-newer';
 import browsersync from 'browser-sync';
 import ejs from 'gulp-ejs';
+import fileInclude from 'gulp-file-include';
 
 const sass = gulpSass(dartSass);
 
@@ -54,6 +55,10 @@ const path = {
 
 const html = () => {
     return gulp.src(path.htmls.src)
+    .pipe(fileInclude({
+        prefix: '@@',
+        basepath: '@file'
+    }))
     .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(size())
     .pipe(gulp.dest(path.htmls.dest))

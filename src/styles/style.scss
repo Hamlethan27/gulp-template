@@ -1,11 +1,42 @@
 @import url(./reset.scss);
 
 $mainColor: #00bcd1;
+$dark-blue: #346bae;
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    img {
+        max-width: 100%;
+    }
+}
+
+
 
 .container {
-    width: 1300px;
+    max-width: 1300px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 15px;
 }
+
+@media (max-width: 1300px) {
+    .container {
+        max-width: 970px;
+    }
+}
+@media (max-width: 992px) {
+    .container {
+        max-width: 750px;
+    }
+}
+@media (max-width: 767px) {
+    .container {
+        max-width: none;
+    }
+}
+
 
 header {
     background-color: #333;
@@ -62,9 +93,9 @@ header {
 }
 
 
-.developers {
-    span {
+// .developers {
+//     // span {
         
-    }
+//     // }
 
-}
+// }

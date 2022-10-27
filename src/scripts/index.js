@@ -1,2 +1,3 @@
-const x = (x, y) => { return x * y };
-console.log(x(2,3))
+import fs from 'fs';
+
+fs.mkdirSync('myfolder')
