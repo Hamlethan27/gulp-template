@@ -1,7 +1,39 @@
 @import url(./reset.scss);
 
+$white: #FCFEFE;
+$primary: #1F2B6C;
+$secondary: #159EEC;
+$accent: #BFD2F8;
+$black: #212124;
 $mainColor: #00bcd1;
 $dark-blue: #346bae;
+
+
+
+@font-face {
+    font-family: Yesseva One;
+    src: url(../fonts/YesevaOne-Regular.ttf);
+    width: 400;
+}
+
+
+@font-face {
+    font-family: Work Sans Medium;
+    src: url(../fonts/WorkSans-Medium.ttf);
+}
+
+
+@font-face {
+    font-family: Work Sans Regular;
+    src: url(../fonts/WorkSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: Work Sans Bold;
+    src: url(../fonts/WorkSans-Bold.ttf);
+}
+
+
 
 *{
     box-sizing: border-box;
@@ -11,6 +43,7 @@ $dark-blue: #346bae;
         max-width: 100%;
     }
 }
+
 
 
 
@@ -37,52 +70,79 @@ $dark-blue: #346bae;
     }
 }
 
+// ======== Header ======== 
 
-header {
-    background-color: #333;
+
+.header {
+    background-color: #fff;
 }
 
 .developers{ 
-    img {
-        background: #fff;
-        height: 20px;
-        width: 20px;
+    display: flex;
+    align-items: center;
+    font-family: 'Work Sans Medium';
+    span {
+        color: $secondary;
+        font-size: 21px;
+        margin: 0 20px;
+    }
+    .group-icon {
+        height: 40px;
+        width: 40px;
+    }
+}
+.logo {
+    font-family: 'Yesseva One';
+    padding: 19px 0;
+    font-size: 36px;
+    p {
+        color: $primary;
     }
     span {
-        color: #fff;
-        font-size: 14px;
-        margin-right: 5px;
+        color: $secondary;
     }
 }
 
-.link-holder {
+.links-holder {
     display: flex;
     align-items: center;
     height: 40px;
+    padding: 30px 0;
 }
 
 .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    background-color: $primary;
+    font-family: 'Work Sans Regular';
     &__links {
-        padding-right: 40px;
-        a {
-            text-decoration: none;
-            color: white;
-            transition: color 0.2s linear;
-            &:hover {
-                color: $mainColor;
+        font-size: 18px;
+        margin-right: 40px;
+        position: relative;
+        text-decoration: none;
+        color: $white;
+        transition: color 0.2s linear;
+        text-transform: uppercase;
+        &:hover {
+            color: $accent;
+            &::after{
+                opacity: 1;
             }
         }
+        &::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: $white;
+            opacity: 0;
+            top: 100%;
+            right: 0;
+            z-index: 1;
+            transition: opacity .3 linear;
+        }
+        &.active::after{
+            opacity: 1;
+        }
         
-    }
-    p {
-        padding-left: 30px;
-        color: #fff;
-    }
-    span {
-        color: $mainColor;
     }
 }
 
@@ -93,9 +153,94 @@ header {
 }
 
 
-// .developers {
-//     // span {
-        
-//     // }
 
-// }
+
+
+
+
+
+// ============= Footer ===============
+
+
+footer {
+    background-color: $primary;
+}
+
+.footer {
+    font-family: 'Work Sans Regular';
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    .rights {
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        .right {
+            border-right: 2px solid $secondary;
+            padding: 0 5px;
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+    &_social-links {
+        max-width: 200px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+
+
+
+
+
+
+// ================ Intro ================
+
+
+.intro {
+    font-family: 'Yesseva One';
+    background: url(../img/main-bg.webp) no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 700px;
+    &__content {
+        padding: 170px 0;
+        width: 520px;
+        h2 {
+            color: $secondary;
+            text-transform: uppercase;
+            font-family: 'Work Sans Regular';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        h1 {
+            color: $primary;
+            font-size: 48px;
+            margin-bottom: 32px;
+        }
+        button {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 13px 35px;
+            // gap: 10px;
+            border-radius: 50px;
+            background-color: $accent;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}

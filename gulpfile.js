@@ -137,7 +137,7 @@ const img = () => {
 
 // Функция для очищения папки проекта
 
-const clean = () => deleteAsync(['dist/*', '!dist/img']);
+const clean = () => deleteAsync(['dist/*', '!dist/img', '!dist/fonts']);
 
 
 // Слежка за изменениями в папках
@@ -152,6 +152,7 @@ const watch = () => {
     gulp.watch(path.scripts.src, scripts)
     gulp.watch(path.htmls.src).on('change', browsersync.reload)
     gulp.watch(path.htmls.src, html)
+    gulp.watch('src/**/*.html', html)
     gulp.watch(path.images.src, img)
     gulp.watch(path.ejs.src, EJS)
 }
