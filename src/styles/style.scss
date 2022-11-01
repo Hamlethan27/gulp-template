@@ -1,5 +1,9 @@
 @import url(./reset.scss);
 
+
+
+// ====================== VARIABLES ======================
+
 $white: #FCFEFE;
 $primary: #1F2B6C;
 $secondary: #159EEC;
@@ -9,6 +13,9 @@ $mainColor: #00bcd1;
 $dark-blue: #346bae;
 
 
+
+
+// ====================== FONTS ======================
 
 @font-face {
     font-family: Yesseva One;
@@ -45,6 +52,7 @@ $dark-blue: #346bae;
 }
 
 
+// ====================== CONTAINER ======================
 
 
 .container {
@@ -94,7 +102,7 @@ $dark-blue: #346bae;
 .logo {
     font-family: 'Yesseva One';
     padding: 19px 0;
-    font-size: 36px;
+    font-size: 25px;
     p {
         color: $primary;
     }
@@ -113,6 +121,32 @@ $dark-blue: #346bae;
 .nav {
     background-color: $primary;
     font-family: 'Work Sans Regular';
+    .nav-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        background-color: $accent;
+        width: 150px;
+        height: 30px;
+        border: 0;
+        border-radius: 15px;
+        cursor: pointer;
+        transition-duration: .4s;
+        &:hover {
+            opacity: 0.8;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        a {
+            color: $primary;
+            text-decoration: none;
+        }
+    }
     &__links {
         font-size: 18px;
         margin-right: 40px;
@@ -141,8 +175,7 @@ $dark-blue: #346bae;
         }
         &.active::after{
             opacity: 1;
-        }
-        
+        } 
     }
 }
 
@@ -151,6 +184,10 @@ $dark-blue: #346bae;
     align-items: center;
     justify-content: space-between;
 }
+
+
+
+
 
 
 
@@ -232,15 +269,136 @@ footer {
             margin-bottom: 32px;
         }
         button {
+            font-size: 20px;
+            color: $primary;
             display: flex;
             flex-direction: row;
             align-items: flex-start;
             padding: 13px 35px;
-            // gap: 10px;
             border-radius: 50px;
             background-color: $accent;
             border: none;
             cursor: pointer;
+        }
+        .btn {
+            transition-duration: 0.5s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 10px 10px 0 rgba(0,0,0,0.19);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// ====================== FACTS ======================
+
+
+.facts {
+    background-color: $primary;
+    color: $white;
+    font-family: 'Yesseva One';
+    padding: 40px 0;
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .fact {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        text-transform: uppercase;
+        width: 320px;
+        height: 40px;
+    }
+}
+
+
+
+// ====================== NEWS ======================
+
+
+.news {
+    font-family: 'Work Sans Regular';
+    padding-bottom: 50px;
+    &__name {
+        padding: 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Yesseva One';
+        font-weight: 550;
+        font-size: 40px;
+    }
+    &__columns {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    &__column {
+        max-width: 400px;
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+    .img {
+        width: 400px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        img {
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            // background-size: cover;
+            // background-size: 100% 100%;
+        }
+    }
+    &__date {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    &__title {
+        font-family: 'Work Sans Bold';
+        color: #030303;
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+    &__subtitle {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .btn {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .button {
+            cursor: pointer;
+            border: 1px solid $primary;
+            border-radius: 30px;
+            width: 170px;
+            height: 54px;
+            font-size: 15px;
+            color: $primary;
+            transition-duration: 0.4s;
+            &:hover {
+                background-color: $primary; /* Green */
+                color: white;
+            }
         }
     }
 }
