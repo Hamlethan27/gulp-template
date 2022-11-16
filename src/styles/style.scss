@@ -1,0 +1,521 @@
+@import url(./reset.scss);
+
+
+
+// ====================== VARIABLES ======================
+
+$white: #FCFEFE;
+$primary: #1F2B6C;
+$secondary: #159EEC;
+$accent: #BFD2F8;
+$black: #212124;
+$mainColor: #00bcd1;
+$dark-blue: #346bae;
+
+
+
+
+// ====================== FONTS ======================
+
+@font-face {
+    font-family: Yesseva One;
+    src: url(../fonts/YesevaOne-Regular.ttf);
+    width: 400;
+}
+
+
+@font-face {
+    font-family: Work Sans Medium;
+    src: url(../fonts/WorkSans-Medium.ttf);
+}
+
+
+@font-face {
+    font-family: Work Sans Regular;
+    src: url(../fonts/WorkSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: Work Sans Bold;
+    src: url(../fonts/WorkSans-Bold.ttf);
+}
+
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    img {
+        max-width: 100%;
+    }
+}
+
+
+// ====================== CONTAINER ======================
+
+
+.container {
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+@media (max-width: 1300px) {
+    .container {
+        max-width: 970px;
+    }
+    .form-control {
+        max-width: 700px;
+    }
+}
+@media (max-width: 992px) {
+    .container {
+        max-width: 750px;
+    }
+    .form-control {
+        max-width: 500px;
+    }
+}
+@media (max-width: 767px) {
+    .container {
+        max-width: none;
+    }
+    .form-control {
+        max-width: 300px;
+    }
+}
+
+// ======== Header ======== 
+
+
+.header {
+    background-color: #fff;
+}
+
+.developers{ 
+    display: flex;
+    align-items: center;
+    font-family: 'Work Sans Medium';
+    span {
+        color: $secondary;
+        font-size: 21px;
+        margin: 0 20px;
+    }
+    .group-icon {
+        height: 40px;
+        width: 40px;
+    }
+}
+.logo {
+    font-family: 'Yesseva One';
+    padding: 19px 0;
+    font-size: 25px;
+    p {
+        color: $primary;
+    }
+    span {
+        color: $secondary;
+    }
+}
+
+.links-holder {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 30px 0;
+}
+
+.nav {
+    background-color: $primary;
+    font-family: 'Work Sans Regular';
+    .nav-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        background-color: $accent;
+        width: 150px;
+        height: 30px;
+        border: 0;
+        border-radius: 15px;
+        cursor: pointer;
+        transition-duration: .4s;
+        &:hover {
+            opacity: 0.8;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        a {
+            color: $primary;
+            text-decoration: none;
+        }
+    }
+    &__links {
+        font-size: 18px;
+        margin-right: 40px;
+        position: relative;
+        text-decoration: none;
+        color: $white;
+        transition: color 0.2s linear;
+        text-transform: uppercase;
+        &:hover {
+            color: $accent;
+            &::after{
+                opacity: 1;
+            }
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: $white;
+            opacity: 0;
+            top: 100%;
+            right: 0;
+            z-index: 1;
+            transition: opacity .3 linear;
+        }
+        &.active::after{
+            opacity: 1;
+        } 
+    }
+}
+
+.header-contacts {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// ============= Footer ===============
+
+
+footer {
+    background-color: $primary;
+}
+
+.footer {
+    font-family: 'Work Sans Regular';
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    .rights {
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        .right {
+            border-right: 2px solid $secondary;
+            padding: 0 5px;
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+    &_social-links {
+        max-width: 200px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
+
+
+
+
+
+
+// ================ Intro ================
+
+
+.intro {
+    font-family: 'Yesseva One';
+    background: url(../img/main-bg.webp) no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 700px;
+    &__content {
+        padding: 170px 0;
+        width: 520px;
+        h2 {
+            color: $secondary;
+            text-transform: uppercase;
+            font-family: 'Work Sans Regular';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        h1 {
+            color: $primary;
+            font-size: 48px;
+            margin-bottom: 32px;
+        }
+        button {
+            font-size: 20px;
+            color: $primary;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 13px 35px;
+            border-radius: 50px;
+            background-color: $accent;
+            border: none;
+            cursor: pointer;
+        }
+        .btn {
+            transition-duration: 0.5s;
+        }
+        .btn:hover {
+            opacity: 0.9;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 10px 10px 0 rgba(0,0,0,0.19);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// ====================== FACTS ======================
+
+
+.facts {
+    background-color: $primary;
+    color: $white;
+    font-family: 'Yesseva One';
+    padding: 40px 0;
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .fact {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        text-transform: uppercase;
+        width: 320px;
+        height: 40px;
+    }
+}
+
+
+
+// ====================== NEWS ======================
+
+
+.news {
+    font-family: 'Work Sans Regular';
+    padding-bottom: 50px;
+    &__name {
+        padding: 30px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Yesseva One';
+        font-weight: 550;
+        font-size: 40px;
+    }
+    &__columns {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    &__column {
+        max-width: 400px;
+        padding: 0 10px;
+        margin-bottom: 20px;
+    }
+    .img {
+        width: 400px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        img {
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            // background-size: cover;
+            // background-size: 100% 100%;
+        }
+    }
+    &__date {
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    &__title {
+        font-family: 'Work Sans Bold';
+        color: #030303;
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+    &__subtitle {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    .btn {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .button {
+            cursor: pointer;
+            border: 1px solid $primary;
+            border-radius: 30px;
+            width: 170px;
+            height: 54px;
+            font-size: 15px;
+            color: $primary;
+            transition-duration: 0.4s;
+            &:hover {
+                background-color: $primary; /* Green */
+                color: white;
+            }
+        }
+    }
+}
+
+
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    font-size: 40px;
+    font-family: 'Work Sans Medium';
+    
+}
+
+
+
+.features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    font-size: 40px;
+    font-family: 'Work Sans Medium';
+}
+
+
+
+
+// ====================== CONTACT ======================
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Work Sans Medium';
+    padding: 10px 0;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.form-control {
+    width: 800px;
+    display: block;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 9px 10px;
+    font-size: 20px;
+    transition: all .09s ease-out;
+}
+label {
+    display: block;
+    font-size: 20px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    cursor: text;
+    background-color: #fff;
+    transition: all .09s ease-out;
+}
+.form-control:focus {
+    outline: none;
+    border-color: coral;
+    box-shadow: 0 0 3px rgba(255,127,80, .6);
+}
+.form-control:focus ~ label{
+    top: -7px;
+    color: coral;
+    font-size: 14px;
+}
+.form-control:valid ~ label{
+    top: -7px;
+    font-size: 14px;
+    // color: #36b13b;
+    color: $secondary;
+}
+.form-control.message {
+    height: 150px;
+    resize: none;
+}
+
+.btn-main {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 25px;
+    font-size: 14px;
+    color: #fff;
+    background-color: $secondary;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Work Sans Medium';
+}
+
+
+
+// ====================== TEST ======================
+
+.test {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Work Sans Medium';
+    padding: 10px 0;
+}
+
