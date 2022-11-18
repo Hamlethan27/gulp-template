@@ -62,36 +62,17 @@ $dark-blue: #346bae;
     padding: 0 15px;
 }
 
-@media (max-width: 1300px) {
-    .container {
-        max-width: 970px;
-    }
-    .form-control {
-        max-width: 700px;
-    }
-}
-@media (max-width: 992px) {
-    .container {
-        max-width: 750px;
-    }
-    .form-control {
-        max-width: 500px;
-    }
-}
-@media (max-width: 767px) {
-    .container {
-        max-width: none;
-    }
-    .form-control {
-        max-width: 300px;
-    }
-}
 
 // ======== Header ======== 
 
 
 .header {
     background-color: #fff;
+    &-contacts {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
 .developers{ 
@@ -136,7 +117,7 @@ $dark-blue: #346bae;
         justify-content: space-between;
     }
     .button {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
         font-size: 25px;
@@ -146,14 +127,12 @@ $dark-blue: #346bae;
         border: 0;
         border-radius: 15px;
         cursor: pointer;
-        transition-duration: .4s;
+        transition: all .2s ease-in-out;
+        text-decoration: none;
+        color: $primary;
         &:hover {
-            opacity: 0.8;
+            opacity: 0.75;
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-        }
-        a {
-            color: $primary;
-            text-decoration: none;
         }
     }
     &__links {
@@ -188,11 +167,6 @@ $dark-blue: #346bae;
     }
 }
 
-.header-contacts {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
 
 
@@ -291,10 +265,14 @@ footer {
         }
         .btn {
             transition-duration: 0.5s;
-        }
-        .btn:hover {
-            opacity: 0.9;
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 10px 10px 0 rgba(0,0,0,0.19);
+            a {
+                text-decoration: none;
+                color: $primary;
+            }
+            &:hover {
+                opacity: 0.85;
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 10px 10px 0 rgba(0,0,0,0.19);
+            }
         }
     }
 }
@@ -447,18 +425,25 @@ footer {
     flex-direction: column;
     font-family: 'Work Sans Medium';
     padding: 10px 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    &-title {
+        font-size: 40px;
+        span {
+            color: $secondary;
+        }
+    }
+    &-info {
+        margin: 20px 0;
+        max-width: 600px;
+        line-height: 150%;
+        font-size: 20px;
+        span {
+            color: coral;
+        }
+    }
 }
 
-.contact-title {
-    font-size: 40px;
-}
-
-.contact-info {
-    margin: 20px 0;
-    max-width: 600px;
-    line-height: 150%;
-    font-size: 20px;
-}
 
 
 // ====================== TEST ======================
@@ -469,6 +454,34 @@ footer {
     align-items: center;
     font-family: 'Work Sans Medium';
     padding: 10px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    &-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-right: 50px;
+        .title {
+            font-size: 40px;
+            max-width: 300px;
+            margin-bottom: 10px;
+            span {
+                color: $secondary;
+            }
+        }
+        .subtitle {
+            font-size: 25px;
+            max-width: 400px;
+            line-height: 125%;
+            span {
+                color: coral;
+            }
+        }
+    }
+    .form-control {
+        width: 600px;
+    }
 }
 
 // ====================== FORMS ======================
@@ -478,22 +491,39 @@ footer {
     display: flex;
     align-items: center;
     flex-direction: column;
-}
-
-.form-group {
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.form-control {
-    width: 800px;
-    display: block;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 9px 10px;
-    font-size: 20px;
-    transition: all .09s ease-out;
+    &-group {
+        margin-bottom: 10px;
+        position: relative;
+    }
+    &-control {
+        width: 800px;
+        display: block;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 9px 10px;
+        font-size: 20px;
+        transition: all .09s ease-out;
+        &:focus {
+            outline: none;
+            border-color: coral;
+            box-shadow: 0 0 3px rgba(255,127,80, .6);
+            & ~ label {
+                top: -7px;
+                color: coral;
+                font-size: 14px;
+            }
+        }
+        &:valid ~ label {
+            top: -7px;
+            font-size: 14px;
+            color: $secondary;
+        }
+        &.message {
+            height: 150px;
+            resize: none;
+        }
+    }
 }
 
 label {
@@ -506,41 +536,9 @@ label {
     background-color: #fff;
     transition: all .09s ease-out;
 }
-.form-control:focus {
-    outline: none;
-    border-color: coral;
-    box-shadow: 0 0 3px rgba(255,127,80, .6);
-}
-.form-control:focus ~ label{
-    top: -7px;
-    color: coral;
-    font-size: 14px;
-}
-.form-control:valid ~ label{
-    top: -7px;
-    font-size: 14px;
-    color: $secondary;
-}
-.form-control.message {
-    height: 150px;
-    resize: none;
-}
 
-.btn-main {
-    display: inline-block;
-    text-decoration: none;
-    width: 100%;
-    padding: 10px 25px;
-    font-size: 14px;
-    color: #fff;
-    background-color: $secondary;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-family: 'Work Sans Medium';
-    box-shadow: 0 5px 0 #166a9a;
-}
+
+
 
 .btn-main {
     display: inline-block;
@@ -624,4 +622,159 @@ label {
     border-radius: 50%;
     transform: scale(0);
     cursor: pointer;
+}
+
+
+
+
+
+
+// ====================== MODALS ======================
+
+
+
+.modals {
+    .modal-overlay {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+        &--visible {
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+    .modal {
+        background-color: $white;
+        height: 900px;
+        width: 800px;
+        padding: 15px 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        &--visible {
+            display: block;
+        }
+        .img {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            img {
+                background-repeat: no-repeat;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                // background-size: cover;
+                // background-size: 100% 100%;
+            }
+        }
+        .date {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-family: 'Work Sans Bold';
+            color: #030303;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+        .subtitle {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1300px) {
+    .container {
+        max-width: 970px;
+    }
+    .form-control {
+        max-width: 700px;
+    }
+    .test.form-control {
+        max-width: 500px;
+    }
+    .developers * {
+        font-size: 19px;
+    }
+    .logo {
+        font-size: 23px;
+    }
+    .nav__links {
+        font-size: 17px;
+    }
+}
+@media (max-width: 992px) {
+    .container {
+        max-width: 750px;
+    }
+    .form-control {
+        max-width: 500px;
+    }
+    .test.form-control {
+        max-width: 400px;
+    }
+    .developers span {
+        font-size: 17px;
+    }
+    .logo {
+        font-size: 21px;
+    }
+    .nav__links {
+        font-size: 16px;
+    }
+}
+@media (max-width: 767px) {
+    .container {
+        max-width: none;
+    }
+    .form-control {
+        max-width: 300px; 
+    }
+    .test.form-control {
+        max-width: 200px;
+    }
+    .developers span {
+        font-size: 13px;
+    }
+    .logo {
+        font-size: 19px;
+    }
+    .nav__links {
+        font-size: 15px;
+    }
 }
