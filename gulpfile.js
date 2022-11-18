@@ -18,7 +18,6 @@ import htmlmin from 'gulp-htmlmin';
 import size from 'gulp-size';
 import newer from 'gulp-newer';
 import browsersync from 'browser-sync';
-import ejs from 'gulp-ejs';
 import fileInclude from 'gulp-file-include';
 
 const sass = gulpSass(dartSass);
@@ -43,10 +42,6 @@ const path = {
         src: 'src/*.html',
         dest: 'dist/'
     },
-    ejs: {
-        src: 'src/ejsFiles/*.ejs',
-        dest: 'dist/ejsFiles'
-    }
 }
 
 // Минификация и обработка html файла
@@ -143,13 +138,12 @@ const watch = () => {
     gulp.watch(path.htmls.src, html)
     gulp.watch('src/**/*.html', html)
     gulp.watch(path.images.src, img)
-    gulp.watch(path.ejs.src, EJS)
 }
 
 
 // Объединение все функций
 
-const build = gulp.series(clean, gulp.parallel(EJS, html), gulp.parallel(styles, scripts, img), watch);
+const build = gulp.series(clean, html, gulp.parallel(styles, scripts, img), watch);
 
 
 gulp.task('default', build);
