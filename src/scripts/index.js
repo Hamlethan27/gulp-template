@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
 const btns = document.querySelectorAll('.button');
 const modalOverlay = document.querySelector('.modal-overlay');
 const modals = document.querySelectorAll('.modal');
-const body = document.getElementsByTagName('body');
 btns.forEach((el) => {
     el.addEventListener('click', (e) => {
         let path = e.currentTarget.getAttribute('data-path');
@@ -83,8 +82,6 @@ btns.forEach((el) => {
         modalOverlay.classList.add('modal-overlay--visible');
     });
 });
-
-
 modalOverlay.addEventListener('click', (e) => {
     if(e.target == modalOverlay) {
         modalOverlay.classList.remove('modal-overlay--visible');

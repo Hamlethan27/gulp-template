@@ -49,7 +49,7 @@ const path = {
     }
 }
 
-// Минификация html файла
+// Минификация и обработка html файла
 
 const html = () => {
     return gulp.src(path.htmls.src)
@@ -63,15 +63,6 @@ const html = () => {
     .pipe(browsersync.stream())
 }
 
-
-const EJS = () => {
-    return gulp.src(path.ejs.src)
-    .pipe(ejs({
-        msg: "Hello gulp!"
-    }))
-    .pipe(gulp.dest(path.ejs.dest))
-    .pipe(browsersync.stream())
-}
 
 
 
