@@ -1,6 +1,6 @@
 "use strict"
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('form');
     form.addEventListener('submit', formSend);
 
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function emailTest(input) {
         return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
     }
-})
+});
 
 
 
@@ -71,14 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
 const btns = document.querySelectorAll('.button');
 const modalOverlay = document.querySelector('.modal-overlay');
 const modals = document.querySelectorAll('.modal');
-
+const body = document.getElementsByTagName('body');
 btns.forEach((el) => {
     el.addEventListener('click', (e) => {
         let path = e.currentTarget.getAttribute('data-path');
-        console.log(path);
         modals.forEach((el) => {
             el.classList.remove('modal-overlay--visible');
         });
+        // body.classList.add('overflow-hidden');
         document.querySelector(`[data-target="${path}"]`).classList.add('modal--visible');
         modalOverlay.classList.add('modal-overlay--visible');
     });
@@ -93,3 +93,26 @@ modalOverlay.addEventListener('click', (e) => {
         });
     }
 });
+
+
+let heightsOfTitles = document.getElementsByClassName('news__title');
+let heightsOfSubtitles = document.getElementsByClassName('news__subtitle');
+let maxHeightOfTitles = heightsOfTitles[0].clientHeight;
+let maxHeightOfSubtitles = heightsOfSubtitles[0].clientHeight;
+
+for (let i = 0; i < 3; ++i) {
+    if(maxHeightOfTitles < heightsOfTitles[i].clientHeight)  maxHeightOfTitles= heightsOfTitles[i].clientHeight;
+    if(maxHeightOfSubtitles < heightsOfSubtitles[i].clientHeight)  maxHeightOfSubtitles= heightsOfSubtitles[i].clientHeight;
+}
+for (let i = 0; i < 3; ++i) {
+    heightsOfTitles[i].style.minHeight = maxHeightOfTitles+"px";
+    heightsOfSubtitles[i].style.minHeight = maxHeightOfSubtitles+"px";
+}
+for (let i = 3; i < heightsOfTitles.length; ++i) {
+    if(maxHeightOfTitles < heightsOfTitles[i].clientHeight)  maxHeightOfTitles= heightsOfTitles[i].clientHeight;
+    if(maxHeightOfSubtitles < heightsOfSubtitles[i].clientHeight)  maxHeightOfSubtitles= heightsOfSubtitles[i].clientHeight;
+}
+for (let i = 3; i < heightsOfTitles.length; ++i) {
+    heightsOfTitles[i].style.minHeight = maxHeightOfTitles+"px";
+    heightsOfSubtitles[i].style.minHeight = maxHeightOfSubtitles+"px";
+}

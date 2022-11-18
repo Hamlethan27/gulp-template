@@ -50,7 +50,14 @@ $dark-blue: #346bae;
         max-width: 100%;
     }
 }
+// ====================== SCROLLBAR ======================
 
+::-webkit-scrollbar {
+    width: 15px;
+}
+::-webkit-scrollbar-track {
+    color: black;
+}
 
 // ====================== CONTAINER ======================
 
@@ -60,6 +67,7 @@ $dark-blue: #346bae;
     width: 100%;
     margin: 0 auto;
     padding: 0 15px;
+    min-width: 0px;
 }
 
 
@@ -319,7 +327,7 @@ footer {
     font-family: 'Work Sans Regular';
     padding-bottom: 50px;
     &__name {
-        padding: 30px 0;
+        padding-top: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -331,28 +339,30 @@ footer {
         margin-top: 50px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         flex-wrap: wrap;
     }
     &__column {
+        border-radius: 10px;
         max-width: 400px;
-        padding: 0 10px;
+        padding: 10px;
         margin-bottom: 20px;
-    }
-    .img {
-        width: 400px;
-        height: 400px;
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
+        background-color: rgba(137, 193, 254, 0.505);
+    }
+    .img {
+        width: 380px;
+        height: 380px;
         margin-bottom: 20px;
         img {
+            border-radius: 10px;
             background-repeat: no-repeat;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            // background-size: cover;
-            // background-size: 100% 100%;
         }
     }
     &__date {
@@ -402,15 +412,57 @@ footer {
     
 }
 
+// ====================== FEATURES ======================
+
 
 
 .features {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
+    padding: 20px 0;
     font-size: 40px;
     font-family: 'Work Sans Medium';
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 48px;
+        height: 400px;
+        max-width: 930px;
+        margin: 0 auto;
+    }
+    &__text {   
+        margin-left: 20px;
+        width: 560px;
+        padding-right: 20px;
+    }
+    &__title {
+        font-family: "Work Sans Bold";
+        line-height: 52px;
+        margin-bottom: 32px;
+    }
+    &__subtitle {
+        font-size: 17px;
+        line-height: 24px;
+    }
+    &__image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-height: 420px;
+        max-width: 270px;
+        img {
+            object-fit: cover;
+        }
+    }
+}
+.even {
+    background-color: #fafafa;
+    margin: 0 auto;
+}
+.odd {
+    margin: 0 auto;
+}
+.video {
+    background: url('../img/video1.mp4');
 }
 
 
@@ -632,6 +684,10 @@ label {
 // ====================== MODALS ======================
 
 
+.overflow-hidden {
+    overflow-y: hidden;
+}
+
 
 .modals {
     .modal-overlay {
@@ -656,9 +712,9 @@ label {
         }
     }
     .modal {
+        border-radius: 15px;
         background-color: $white;
-        height: 900px;
-        width: 800px;
+        width: 1200px;
         padding: 15px 30px;
         display: flex;
         align-items: center;
@@ -668,6 +724,7 @@ label {
             display: block;
         }
         .img {
+            border-radius: 10px;
             width: 100%;
             height: 400px;
             display: flex;
@@ -686,6 +743,7 @@ label {
         .date {
             font-size: 14px;
             margin-bottom: 20px;
+            font-family: 'Work Sans Regular';
         }
         .title {
             font-family: 'Work Sans Bold';
@@ -694,8 +752,10 @@ label {
             margin-bottom: 20px;
         }
         .subtitle {
-            font-size: 20px;
+            font-size: 24px;
             margin-bottom: 20px;
+            line-height:120%;
+            letter-spacing: 105%;
         }
     }
 }
@@ -737,6 +797,9 @@ label {
     .nav__links {
         font-size: 17px;
     }
+    .facts .fact {
+        font-size: 27px;
+    }
 }
 @media (max-width: 992px) {
     .container {
@@ -756,6 +819,14 @@ label {
     }
     .nav__links {
         font-size: 16px;
+    }
+    .news__columns {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .facts .fact {
+        font-size: 24px;
     }
 }
 @media (max-width: 767px) {
@@ -777,4 +848,16 @@ label {
     .nav__links {
         font-size: 15px;
     }
+    .news__columns {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .facts .fact {
+        font-size: 21px;
+    }
 }
+
+
+
+
